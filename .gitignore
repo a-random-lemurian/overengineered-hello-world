@@ -1,0 +1,8 @@
+*.gz
+*.[oa]
+.*.d
+*.so
+.vscode
+.vs
+helloworld
+auto
