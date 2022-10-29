@@ -1,0 +1,6 @@
+IndentWidth: 2
+BreakBeforeBraces: Stroustrup
+UseTab: Never
+AllowShortIfStatementsOnASingleLine: false
+IndentCaseLabels: false
+ColumnLimit: 79
