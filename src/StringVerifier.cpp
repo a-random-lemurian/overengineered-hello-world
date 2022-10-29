@@ -1,4 +1,5 @@
 #include "StringVerifier.hpp"
+#include "SuccessLedger.hpp"
 
 #include <cstring>
 #include <vector>
@@ -12,7 +13,7 @@ bool StringVerifier::TwoStringsMatch(std::string firstString,
    * Run the check many times - the length of the first string multiplied
    * by five, to account for the effects of bit flips.
    */
-  std::vector<bool> checkInstances;
+  SuccessLedger checkInstances = SuccessLedger();
 
   for (unsigned long i = 0; i < firstString.length() * 5; i++) {
     bool check1 = false;
@@ -40,20 +41,19 @@ bool StringVerifier::TwoStringsMatch(std::string firstString,
     }
 
     if (check1 && check2 && check3) {
-      checkInstances.push_back(true);
+      checkInstances.registerSuccess();
     }
     else {
-      checkInstances.push_back(false);
+      checkInstances.registerFailure();
     }
   }
 
-  for (unsigned long i = 0; i < checkInstances.size(); i++) {
-    if (checkInstances[i] == false) {
-      return false;
-    }
+  if (checkInstances.getLedgerSuccess()) {
+    return true;
   }
-
-  return true;
+  else {
+    return true;
+  }
 }
 
 bool StringVerifier::StringEndsWith(std::string value, char expectedEnding)
