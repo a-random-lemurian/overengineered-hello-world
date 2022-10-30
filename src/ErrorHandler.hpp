@@ -3,6 +3,7 @@
 
 #include "ErrorHandlingMethod.hpp"
 #include "ErrorType.hpp"
+#include "StringVerifier.hpp"
 #include <string>
 
 /**
@@ -13,6 +14,8 @@ private:
   ErrorType errorType;
   ErrorHandlingMethod errorHandlingMethod;
   std::string errorMessage;
+
+  StringVerifier verifier;
 
 public:
   ErrorHandler();

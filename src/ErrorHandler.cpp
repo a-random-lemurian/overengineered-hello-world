@@ -14,6 +14,10 @@ void ErrorHandler::SetErrorMessage(std::string errorMessage)
 void ErrorHandler::PrintErrorMessage()
 {
   std::cout << GetErrorMessageString();
+
+  if (verifier.StringEndsInNewLine(GetErrorMessageString()) == false) {
+    std::cout << "\n";
+  }
 }
 
 std::string ErrorHandler::GetErrorMessageString()
