@@ -3,6 +3,7 @@
 #include "HelloWorldPrinter.hpp"
 #include "StringManipulator.hpp"
 #include "ErrorHandler.hpp"
+#include "SuccessLedger.hpp"
 
 HelloWorldPrinter::HelloWorldPrinter()
 {
@@ -10,13 +11,26 @@ HelloWorldPrinter::HelloWorldPrinter()
 
 bool HelloWorldPrinter::verifyHelloWorld(std::string value)
 {
-  bool check1 = this->verifier.TwoStringsMatch(value, "Hello World!\n");
-  bool check2 = this->verifier.StringEndsInNewLine(value);
+  SuccessLedger checks;
 
-  if (check1 && check2) {
-    return true;
+  if (this->verifier.TwoStringsMatch(value, "Hello World!\n")) {
+    checks.registerSuccess();
   }
   else {
+    checks.registerFailure();
+  }
+
+  if (this->verifier.StringEndsInNewLine(value)) {
+    checks.registerSuccess();
+  }
+  else {
+    checks.registerFailure();
+  }
+
+  if (checks.getLedgerSuccess() == true) {
+    return true;
+  }
+  else if (checks.getLedgerSuccess() == false) {
     return false;
   }
 }
