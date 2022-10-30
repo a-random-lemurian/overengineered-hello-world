@@ -2,6 +2,7 @@
 
 #include "HelloWorldPrinter.hpp"
 #include "StringManipulator.hpp"
+#include "ErrorHandler.hpp"
 
 HelloWorldPrinter::HelloWorldPrinter()
 {
@@ -43,7 +44,18 @@ std::string HelloWorldPrinter::makeHelloWorldString()
     return returnValue;
   }
   else {
-    std::cout << "verifier failed";
-    abort();
+    const std::string stringWasNotHelloWorldMessage = "verifier failed - "
+                                                      "message is not hello "
+                                                      "world";
+
+    ErrorHandler notHelloWorldErrorHandler;
+
+    notHelloWorldErrorHandler.SetErrorMessage(stringWasNotHelloWorldMessage);
+    notHelloWorldErrorHandler.SetErrorHandler(LeaveWithAbortSignal);
+    notHelloWorldErrorHandler.Handle();
+
+    return NULL;
   }
+
+  return returnValue;
 }
