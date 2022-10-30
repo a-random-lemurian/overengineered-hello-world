@@ -33,6 +33,8 @@ bool HelloWorldPrinter::verifyHelloWorld(std::string value)
   else if (checks.getLedgerSuccess() == false) {
     return false;
   }
+
+  return false;
 }
 
 bool HelloWorldPrinter::verifyStringEndsInNewLine(std::string value)
