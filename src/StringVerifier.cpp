@@ -85,7 +85,7 @@ bool StringVerifier::TwoStringsMatch(std::string firstString,
     return true;
   }
   else {
-    return true;
+    return false;
   }
 }
 
