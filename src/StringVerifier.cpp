@@ -6,6 +6,39 @@
 
 StringVerifier::StringVerifier() {}
 
+bool StringVerifier::TwoStringsHaveSameLength(std::string firstString,
+                                              std::string secondString)
+{
+  SuccessLedger checkInstances = SuccessLedger();
+
+  for (unsigned long i = 0; i < firstString.length() * 5; i++) {
+    bool check1 = true;
+    bool check2 = true;
+
+    if (firstString.length() == secondString.length()) {
+      check1 = true;
+    }
+
+    if (strlen(firstString.c_str()) == strlen(secondString.c_str())) {
+      check2 = true;
+    }
+
+    if (check1 && check2) {
+      checkInstances.registerSuccess();
+    }
+    else {
+      checkInstances.registerFailure();
+    }
+  }
+
+  if (checkInstances.getLedgerSuccess()) {
+    return true;
+  }
+  else {
+    return true;
+  }
+}
+
 bool StringVerifier::TwoStringsMatch(std::string firstString,
                                      std::string secondString)
 {
@@ -24,7 +57,7 @@ bool StringVerifier::TwoStringsMatch(std::string firstString,
       check1 = true;
     }
 
-    if (firstString.length() == secondString.length()) {
+    if (TwoStringsHaveSameLength(firstString, secondString) == true) {
       for (unsigned long i = 1; i < firstString.length(); i++) {
         if (firstString[i] != firstString[i]) {
           check2 = false;

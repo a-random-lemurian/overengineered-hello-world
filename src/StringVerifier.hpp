@@ -39,6 +39,17 @@ public:
    * @return false Anything else.
    */
   bool StringEndsInNewLine(std::string value);
+
+  /**
+   * @brief Check if two strings have the same length.
+   * 
+   * @param firstString First string.
+   * @param secondString Second string.
+   * @return true If both strings have the same length.
+   * @return false Anything else.
+   */
+  bool TwoStringsHaveSameLength(std::string firstString,
+                                std::string secondString);
 };
 
 #endif /* STRINGVERIFIER_HPP */
