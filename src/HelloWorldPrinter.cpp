@@ -13,28 +13,32 @@ bool HelloWorldPrinter::verifyHelloWorld(std::string value)
 {
   SuccessLedger checks;
 
-  if (this->verifier.TwoStringsMatch(value, "Hello World!\n")) {
-    checks.registerSuccess();
-  }
-  else {
-    checks.registerFailure();
+  for (unsigned long i = 0; i < value.length() * 5; i = i + 1) {
+    SuccessLedger checksForThisLoop;
+
+    if (this->verifier.TwoStringsMatch(value, "Hello World!\n")) {
+      checksForThisLoop.registerSuccess();
+    }
+    else {
+      checksForThisLoop.registerFailure();
+    }
+
+    if (this->verifier.StringEndsInNewLine(value)) {
+      checksForThisLoop.registerSuccess();
+    }
+    else {
+      checksForThisLoop.registerFailure();
+    }
+
+    if (checksForThisLoop.getLedgerSuccess() == true) {
+      checks.registerSuccess();
+    }
+    else if (checksForThisLoop.getLedgerSuccess() == false) {
+      checks.registerFailure();
+    }
   }
 
-  if (this->verifier.StringEndsInNewLine(value)) {
-    checks.registerSuccess();
-  }
-  else {
-    checks.registerFailure();
-  }
-
-  if (checks.getLedgerSuccess() == true) {
-    return true;
-  }
-  else if (checks.getLedgerSuccess() == false) {
-    return false;
-  }
-
-  return false;
+  return checks.getLedgerSuccess();
 }
 
 bool HelloWorldPrinter::verifyStringEndsInNewLine(std::string value)
