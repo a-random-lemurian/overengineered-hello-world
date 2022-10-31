@@ -5,6 +5,7 @@ class LeaveMethods {
 public:
   LeaveMethods();
   void LeaveWithAbortSignal();
+  void LeaveWithSuccess();
 };
 
 #endif /* LEAVEMETHODS_HPP */
