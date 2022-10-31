@@ -35,7 +35,7 @@ bool StringVerifier::TwoStringsHaveSameLength(std::string firstString,
     return true;
   }
   else {
-    return true;
+    return false;
   }
 }
 
