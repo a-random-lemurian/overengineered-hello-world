@@ -10,5 +10,5 @@ int main()
     std::cout << helloWorldPrinter.makeHelloWorldString();
   }
 
-  return 1;
+  return 0;
 }
