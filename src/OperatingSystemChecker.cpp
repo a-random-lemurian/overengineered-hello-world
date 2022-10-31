@@ -12,5 +12,7 @@ OperatingSystem OperatingSystemChecker::getOperatingSystem()
 #elif __linux__
   system = OperatingSystem::Linux;
 #endif
+
+  return system;
 }
 
