@@ -9,10 +9,15 @@ std::string NewLineProvider::getNewLineCharacter()
 
   switch (osChecker.getOperatingSystem()) {
     case OperatingSystem::Linux:
-      return this->lf;
+      chosenLineBreak = this->lf;
+      break;
     case OperatingSystem::Mac:
-      return this->lf;
+      chosenLineBreak = this->lf;
+      break;
     case OperatingSystem::MicrosoftWindows:
-      return this->crlf;
+      chosenLineBreak = this->crlf;
+      break;
   }
+
+  return chosenLineBreak;
 }
