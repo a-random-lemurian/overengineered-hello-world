@@ -32,3 +32,13 @@ void SuccessLedger::registerSuccess()
 {
   this->getLedger()->push_back(true);
 }
+
+void SuccessLedger::registerBooleanValue(bool value)
+{
+  if (value == true) {
+    registerSuccess();
+  }
+  else if (value == false) {
+    registerFailure();
+  }
+}

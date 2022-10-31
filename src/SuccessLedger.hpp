@@ -40,6 +40,13 @@ public:
    * Adds a boolean value "false" to the vector.
    */
   void registerFailure();
+
+  /**
+   * @brief Register a boolean value.
+   * 
+   * @param value A boolean value.
+   */
+  void registerBooleanValue(bool value);
 };
 
 #endif /* SUCCESSLEDGER_HPP */
