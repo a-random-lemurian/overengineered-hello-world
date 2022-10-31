@@ -9,6 +9,6 @@ class NewLineProvider {
 
   public:
     std::string getNewLineCharacter();
-}
+};
 
 #endif /* NEWLINEPROVIDER_HPP */
