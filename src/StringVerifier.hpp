@@ -2,12 +2,15 @@
 #define STRINGVERIFIER_HPP
 
 #include <string>
+#include "NewLineProvider.hpp"
 
 /**
  * @brief StringVerifier class to check the validity of strings against some
  * given conditions.
  */
 class StringVerifier {
+private:
+  NewLineProvider newlineProvider;
 public:
   StringVerifier();
 

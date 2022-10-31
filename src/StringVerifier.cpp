@@ -107,5 +107,24 @@ bool StringVerifier::StringEndsWith(std::string value, char expectedEnding)
 
 bool StringVerifier::StringEndsInNewLine(std::string value)
 {
-  return this->StringEndsWith(value, '\n');
+  bool resultCode;
+
+  if (newlineProvider.getNewLineCharacter() == "\n") {
+    resultCode = StringEndsWith(value, '\n');
+  }
+  else if (newlineProvider.getNewLineCharacter() == "\r\n") {
+    if (value[value.size()-1] == '\n') {
+      if (value[value.size()-2] == '\r') {
+        resultCode = true;
+      }
+      else {
+        resultCode = false;
+      }
+    }
+    else {
+      resultCode = false;
+    }
+  }
+
+  return resultCode;
 }

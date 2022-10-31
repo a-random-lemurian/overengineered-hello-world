@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ErrorHandler.hpp"
 #include "LeaveMethods.hpp"
+#include "NewLineProvider.hpp"
 
 ErrorHandler::ErrorHandler()
 {
@@ -16,7 +17,8 @@ void ErrorHandler::PrintErrorMessage()
   std::cout << GetErrorMessageString();
 
   if (verifier.StringEndsInNewLine(GetErrorMessageString()) == false) {
-    std::cout << "\n";
+    NewLineProvider newlineProvider;
+    std::cout << newlineProvider.getNewLineCharacter();
   }
 }
 

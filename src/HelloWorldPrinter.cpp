@@ -2,6 +2,7 @@
 
 #include "HelloWorldPrinter.hpp"
 #include "StringManipulator.hpp"
+#include "NewLineProvider.hpp"
 #include "ErrorHandler.hpp"
 #include "SuccessLedger.hpp"
 
@@ -58,7 +59,9 @@ std::string HelloWorldPrinter::makeHelloWorldString()
   returnValue.append("Hello");
   this->manipulator.addSpaceCharacterToString(&returnValue);
   returnValue.append("World!");
-  returnValue.append("\n");
+
+  NewLineProvider newlineProvider;
+  returnValue.append(newlineProvider.getNewLineCharacter());
 
   if (this->verifyHelloWorld(returnValue) == true) {
     return returnValue;
