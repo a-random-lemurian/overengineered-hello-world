@@ -47,6 +47,28 @@ public:
    * @param value A boolean value.
    */
   void registerBooleanValue(bool value);
+
+  /**
+   * @brief Get how many instances of a boolean value are in the ledger.
+   * 
+   * @param wanted The desired value.
+   * @return unsigned long The number of instances of the desired value.
+   */
+  unsigned long getCountByValue(bool wanted);
+
+  /**
+   * @brief Get a count of the successes in the ledger.
+   *
+   * @return unsigned long The number of successes.
+   */
+  unsigned long getLedgerSuccessCount();
+
+  /**
+   * @brief Get a count of the failures in the ledger.
+   * 
+   * @return unsigned long The number of failures.
+   */
+  unsigned long getLedgerFailureCount();
 };
 
 #endif /* SUCCESSLEDGER_HPP */

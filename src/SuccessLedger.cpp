@@ -42,3 +42,27 @@ void SuccessLedger::registerBooleanValue(bool value)
     registerFailure();
   }
 }
+
+unsigned long SuccessLedger::getCountByValue(bool wanted)
+{
+  unsigned long count = 0;
+  std::vector<bool> ledger = this->ledger;
+
+  for (unsigned long i = 0; i < ledger.size(); i = i + 1) {
+    if (ledger[i] == wanted) {
+      count = count + 1;
+    }
+  }
+
+  return (unsigned long)count;
+}
+
+unsigned long SuccessLedger::getLedgerSuccessCount()
+{
+  return getCountByValue(true);
+}
+
+unsigned long SuccessLedger::getLedgerFailureCount()
+{
+  return getCountByValue(false);
+}
