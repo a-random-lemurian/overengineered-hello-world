@@ -91,12 +91,18 @@ bool StringVerifier::TwoStringsMatch(std::string firstString,
 
 bool StringVerifier::StringEndsWith(std::string value, char expectedEnding)
 {
-  if (value.back() == expectedEnding) {
-    return true;
+  SuccessLedger checks;
+
+  for (unsigned long i = 0; i < value.length() * 5; i++) {
+    if (value.back() == expectedEnding) {
+      checks.registerSuccess();
+    }
+    else {
+      checks.registerFailure();
+    }
   }
-  else {
-    return false;
-  }
+
+  return checks.getLedgerSuccess();
 }
 
 bool StringVerifier::StringEndsInNewLine(std::string value)
